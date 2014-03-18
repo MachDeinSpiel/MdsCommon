@@ -5,7 +5,7 @@ import java.util.HashMap;
 public interface ServerInterface {
 	
 	void createGame();
-	void addPlayer();
+	void addPlayer(GuiInterface client);
 	void startGame();
 	void endGame();
 	public HashMap <String,Object> getWhiteboard();

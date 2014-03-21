@@ -9,6 +9,7 @@ public class MdsState {
 	
 	private int id;
 	private String name;
+	private String parentState;		// später MdsState?
 	private boolean startState;
 	private boolean finalsState;
 	private MdsAction doAction;
@@ -16,9 +17,10 @@ public class MdsState {
 	private MdsAction endAction;
 	private MdsTransition[] transitions;
 	
-	public MdsState(int id, String name, MdsAction doAction, boolean startState, boolean finalState) {
+	public MdsState(int id, String name, String parentState, MdsAction doAction, boolean startState, boolean finalState) {
 		this.setId(id);
 		this.name = name;
+		this.setParentState(parentState);
 		this.setDoAction(doAction);
 		this.setStartState(startState);
 		this.setFinalState(finalState);
@@ -74,6 +76,14 @@ public class MdsState {
 	}
 	public void setTransitions(MdsTransition[] transitions) {
 		this.transitions = transitions;
+	}
+
+	public String getParentState() {
+		return parentState;
+	}
+
+	public void setParentState(String parentState) {
+		this.parentState = parentState;
 	}
 
 }

@@ -1,5 +1,5 @@
 package de.hsbremen.mds.android.whiteboard;
 
-public class itemList {
+public class Whiteboard {
 
 }

@@ -2,14 +2,14 @@ package de.hsbremen.mds.common.valueobjects.statemachine;
 
 
 /**
- * @author JG, NH, JW, SE, AB, RS, OT
+ * @author JW, JG, NH, SE, AB, RS, OT
  */
 
 public class MdsState {
 	
 	private int id;
 	private String name;
-	private String parentState;		// später MdsState?
+	private MdsState parentState;		
 	private boolean startState;
 	private boolean finalsState;
 	private MdsAction doAction;
@@ -17,7 +17,7 @@ public class MdsState {
 	private MdsAction endAction;
 	private MdsTransition[] transitions;
 	
-	public MdsState(int id, String name, String parentState, MdsAction doAction, boolean startState, boolean finalState) {
+	public MdsState(int id, String name, MdsState parentState, MdsAction doAction, boolean startState, boolean finalState) {
 		this.setId(id);
 		this.name = name;
 		this.setParentState(parentState);
@@ -78,11 +78,11 @@ public class MdsState {
 		this.transitions = transitions;
 	}
 
-	public String getParentState() {
+	public MdsState getParentState() {
 		return parentState;
 	}
 
-	public void setParentState(String parentState) {
+	public void setParentState(MdsState parentState) {
 		this.parentState = parentState;
 	}
 

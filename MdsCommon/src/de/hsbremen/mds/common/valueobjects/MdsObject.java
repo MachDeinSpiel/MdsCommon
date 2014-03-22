@@ -1,4 +1,3 @@
-
 package de.hsbremen.mds.common.valueobjects;
 
 import java.util.HashMap;

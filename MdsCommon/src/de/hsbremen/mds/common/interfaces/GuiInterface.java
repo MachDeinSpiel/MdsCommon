@@ -1,6 +1,6 @@
 package de.hsbremen.mds.common.interfaces;
 
-import de.hsbremen.mds.android.whiteboard.Whiteboard;
+
 import de.hsbremen.mds.common.listener.AndroidListener;
 import de.hsbremen.mds.common.valueobjects.MdsImage;
 import de.hsbremen.mds.common.valueobjects.MdsMap;
@@ -13,7 +13,7 @@ public interface GuiInterface {
         void nextFragment(MdsVideo mds);
         void nextFragment(MdsText mds);
         void nextFragment(MdsMap mds);
-        Whiteboard getData(); 
+ 
         
         void update();
 }

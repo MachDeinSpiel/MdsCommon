@@ -1,5 +1,6 @@
-
 package de.hsbremen.mds.common.valueobjects;
+
+import java.util.HashMap;
 
 /**
  * @author AndroidDeppen
@@ -7,41 +8,17 @@ package de.hsbremen.mds.common.valueobjects;
  */
 public class MdsObject {
 
-	String name;
-	String url;
-	String text;
-	String kind;
+	public HashMap<String, MdsObject> attributes;
+	// 0: nicht sichtbar, 1: für alle sichtbar, ID der jeweileigen Gruppe um diese sehen zulassen
+	public int visibility;
 	
-	public MdsObject(String name, String url, String text, String kind){
-		super();
-		this.name = name;
-		this.url = url;
-		this.text = text;
-		this.kind = kind;
+	public MdsObject(HashMap<String, MdsObject> attributes, int visibility){
+		this.attributes = attributes;
+		this.visibility = visibility;
 	}
 	
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getUrl() {
-		return url;
-	}
-
-	public void setUrl(String url) {
-		this.url = url;
-	}
-
-	public String getText() {
-		return text;
-	}
-
-	public void setText(String text) {
-		this.text = text;
+	public void addAttribute(String name, MdsObject value) {
+		attributes.put(name, value);
 	}
 	
 }

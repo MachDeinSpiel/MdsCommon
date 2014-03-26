@@ -1,5 +1,7 @@
 package de.hsbremen.mds.common.valueobjects.statemachine;
 
+import de.hsbremen.mds.common.valueobjects.statemachine.actions.MdsAction;
+
 
 /**
  * @author JW, JG, NH, SE, AB, RS, OT

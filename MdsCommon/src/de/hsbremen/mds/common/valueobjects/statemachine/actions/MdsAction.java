@@ -1,4 +1,4 @@
-package de.hsbremen.mds.common.valueobjects.statemachine;
+package de.hsbremen.mds.common.valueobjects.statemachine.actions;
 
 import java.util.HashMap;
 

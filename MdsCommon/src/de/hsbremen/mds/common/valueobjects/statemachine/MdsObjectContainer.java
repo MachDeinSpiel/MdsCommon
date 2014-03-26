@@ -2,6 +2,8 @@ package de.hsbremen.mds.common.valueobjects.statemachine;
 
 import java.util.List;
 
+import de.hsbremen.mds.common.valueobjects.statemachine.actions.MdsAction;
+
 public class MdsObjectContainer {
 
 	private List<MdsAction> actions;

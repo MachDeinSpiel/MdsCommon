@@ -9,12 +9,11 @@ public class MdsExhibit {
 	private String name;
 	private String url;
 	private String text;
-	private boolean movable;
+	private int movable;
 	private double longitude;
 	private double latitude;
 
-	public MdsExhibit(String name, String url, String text, double longitude,
-			double latitude, boolean movable) {
+	public MdsExhibit(String name, String url, String text, double longitude, double latitude, int movable) {
 		this.setName(name);
 		this.setText(text);
 		this.setUrl(url);
@@ -47,11 +46,11 @@ public class MdsExhibit {
 		this.text = text;
 	}
 
-	public boolean isMovable() {
+	public int isMovable() {
 		return movable;
 	}
 
-	public void setMovable(boolean movable) {
+	public void setMovable(int movable) {
 		this.movable = movable;
 	}
 

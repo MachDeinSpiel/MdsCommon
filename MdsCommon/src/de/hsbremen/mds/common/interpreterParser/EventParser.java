@@ -3,14 +3,16 @@ package de.hsbremen.mds.common.interpreterParser;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Vector;
 
-import android.location.Location;
 import de.hsbremen.mds.common.valueobjects.statemachine.MdsEvent;
 import de.hsbremen.mds.common.valueobjects.statemachine.MdsItem;
+import de.hsbremen.mds.common.whiteboard.Whiteboard;
+import de.hsbremen.mds.common.whiteboard.WhiteboardEntry;
 
 public class EventParser {
 	
-	public static boolean checkEvent(MdsEvent event, HashMap<String, MdsItem> items, double longitude, double latitude) {
+	public static boolean checkEvent(MdsEvent event, Whiteboard wb, double longitude, double latitude) {
 		
 		// alle mit Typ gameEvent
 		if (event.getType().equals("gameEvent")) {
@@ -18,7 +20,7 @@ public class EventParser {
 				int radius = Integer.parseInt(event.getParams().get("radius"));
 				// alle Items durchgehen und gucken ob genug vorhanden sind
 				int quanti = Integer.parseInt(event.getParams().get("quantifier"));
-				if (checkLocationItems(items, longitude, latitude, radius).size() >= quanti) {
+				if (checkLocationItems(wb, longitude, latitude, radius).size() >= quanti) {
 					return true;
 				}
 			}
@@ -72,17 +74,16 @@ public class EventParser {
 	 * @param radius
 	 * @return Liste mit Items innerhalb des Radius
 	 */
-	private static List<MdsItem> checkLocationItems(HashMap<String, MdsItem> items, double longitude, double latitude, int radius ) {
+	private static List<WhiteboardEntry> checkLocationItems(Whiteboard wb, double longitude, double latitude, int radius ) {
 		
-		List<MdsItem> result = new ArrayList<MdsItem>();
+		List<WhiteboardEntry> result = new Vector<WhiteboardEntry>();
 		
 		// Alle Items durchgehen
-		for (String key : items.keySet()) {
-			Location itemPos = new Location("ItemPos");
-			itemPos.setLatitude(items.get(key).getLatitude());
-			itemPos.setLatitude(items.get(key).getLongitude());
-			if(itemPos.distanceTo(loc) <= radius) {
-				result.add(items.get(key));
+		for (String key : ((Whiteboard) wb.getAttribute("items").value).keySet()) {
+			double longi = Double.parseDouble(""+ wb.getAttribute("items", key, "longitude").value);
+			double lati = Double.parseDouble(""+ wb.getAttribute("items", key, "latitude").value);
+			if(distanceInMeter(longitude, latitude, longi, lati) <= radius) {
+				result.add(wb.getAttribute("items", key));
 			}
 		}
 		return result;
@@ -91,21 +92,21 @@ public class EventParser {
 	
 	
 	
-	private double distanceInMeter(double p1long, double p1lat, double p2long, double p2lat){
+	private static double distanceInMeter(double p1long, double p1lat, double p2long, double p2lat){
 		//Code von https://stackoverflow.com/questions/3715521/how-can-i-calculate-the-distance-between-two-gps-points-in-java
 		double d2r = Math.PI / 180;
 		double distance = 0;
-		 double dlong = (p2long - p1long) * d2r;
-		    double dlat = (p2lat - p1lat) * d2r;
-		    double a =
-		        Math.pow(Math.sin(dlat / 2.0), 2)
-		            + Math.cos(p1lat * d2r)
-		            * Math.cos(p2lat * d2r)
-		            * Math.pow(Math.sin(dlong / 2.0), 2);
-		    double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-		    double d = 6367 * c;
+		double dlong = (p2long - p1long) * d2r;
+		double dlat = (p2lat - p1lat) * d2r;
+		double a =
+				Math.pow(Math.sin(dlat / 2.0), 2)
+	            + Math.cos(p1lat * d2r)
+	            * Math.cos(p2lat * d2r)
+	            * Math.pow(Math.sin(dlong / 2.0), 2);
+	    double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+	    double d = 6367 * c;
 
-		    return d;
+	    return d;
 	}
 	
 }

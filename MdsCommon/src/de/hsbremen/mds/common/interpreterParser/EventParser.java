@@ -89,4 +89,23 @@ public class EventParser {
 		
 	}
 	
+	
+	
+	private double distanceInMeter(double p1long, double p1lat, double p2long, double p2lat){
+		//Code von https://stackoverflow.com/questions/3715521/how-can-i-calculate-the-distance-between-two-gps-points-in-java
+		double d2r = Math.PI / 180;
+		double distance = 0;
+		 double dlong = (p2long - p1long) * d2r;
+		    double dlat = (p2lat - p1lat) * d2r;
+		    double a =
+		        Math.pow(Math.sin(dlat / 2.0), 2)
+		            + Math.cos(p1lat * d2r)
+		            * Math.cos(p2lat * d2r)
+		            * Math.pow(Math.sin(dlong / 2.0), 2);
+		    double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+		    double d = 6367 * c;
+
+		    return d;
+	}
+	
 }

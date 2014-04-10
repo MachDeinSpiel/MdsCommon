@@ -8,16 +8,7 @@ import de.hsbremen.mds.common.valueobjects.statemachine.MdsState;
  */
 public interface FsmInterface {
 	
-	void onStateChange(MdsState next, MdsState current);
-
-	public MdsState checkEvents();
-
-	void addStateChangedListener(InterpreterInterface interpreter);
-	
-	/**
- 	* 
- 	* @return die nächste action
- 	*/
+	void onStateChange();
 
 	
 	

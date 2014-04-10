@@ -16,7 +16,6 @@ public interface GuiInterface {
         void nextFragment(MdsText mds);
         void nextFragment(MdsMap mds);
  
-        Whiteboard getData();
         
         void update();
 }

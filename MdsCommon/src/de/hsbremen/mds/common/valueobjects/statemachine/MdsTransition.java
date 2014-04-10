@@ -1,5 +1,7 @@
 package de.hsbremen.mds.common.valueobjects.statemachine;
 
+import de.hsbremen.mds.interpreter.MdsEvent;
+
 
 /**
  * @author JG, NH, JW, SE, AB, RS, OT

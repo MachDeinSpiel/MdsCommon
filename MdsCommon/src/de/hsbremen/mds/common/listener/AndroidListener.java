@@ -4,9 +4,9 @@ public interface AndroidListener {
 	
     public void onButtonClick(String buttonName);
     public void onVideoEnded(String videoName);
-    public void onUserLeftGame(String deineMudda);
+    public void onUserLeftGame(int id);
     
-    public void onPositionChanged(double longitude, double laditude);
+    public void onPositionChanged(double longitude, double latitude);
 }
 
 /*

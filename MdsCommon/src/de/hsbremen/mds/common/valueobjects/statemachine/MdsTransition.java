@@ -1,6 +1,8 @@
 package de.hsbremen.mds.common.valueobjects.statemachine;
 
 
+
+
 /**
  * @author JG, NH, JW, SE, AB, RS, OT
  */

@@ -4,6 +4,7 @@ package de.hsbremen.mds.common.valueobjects;
  * @author chumbawamba!
  */
 
+//TODO: diese Klasse löschen
 public class MdsItem {
 
 	private String name;

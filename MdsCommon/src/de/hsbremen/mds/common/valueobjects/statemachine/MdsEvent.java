@@ -2,6 +2,7 @@ package de.hsbremen.mds.common.valueobjects.statemachine;
 
 import java.util.HashMap;
 
+
 /**
  * @author JG, NH, JW, SE, AB, RS, OT
  */

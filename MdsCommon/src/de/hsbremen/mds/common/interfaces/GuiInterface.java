@@ -18,7 +18,6 @@ public interface GuiInterface {
         
         void getServerData(String type, int id);
  
-        Whiteboard getData();
         
         void update();
 }

@@ -1,6 +1,10 @@
 package de.hsbremen.mds.common.valueobjects.statemachine;
 
 
+import de.hsbremen.mds.common.valueobjects.statemachine.actions.MdsAction;
+import de.hsbremen.mds.common.whiteboard.Whiteboard;
+
+
 /**
  * @author JW, JG, NH, SE, AB, RS, OT
  */
@@ -16,6 +20,7 @@ public class MdsState {
 	private MdsAction startAction;
 	private MdsAction endAction;
 	private MdsTransition[] transitions;
+	private Whiteboard wb;
 	
 	public MdsState(int id, String name, MdsState parentState, MdsAction doAction, boolean startState, boolean finalState) {
 		this.setId(id);
@@ -24,6 +29,12 @@ public class MdsState {
 		this.setDoAction(doAction);
 		this.setStartState(startState);
 		this.setFinalState(finalState);
+	}
+	
+	public MdsState checkEvents(){
+		
+//		// wenn kein Event zutreffend war
+		return null;
 	}
 	
 	public int getId() {

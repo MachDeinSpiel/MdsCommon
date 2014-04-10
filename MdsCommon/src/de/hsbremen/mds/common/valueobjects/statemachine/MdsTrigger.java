@@ -1,22 +1,19 @@
 package de.hsbremen.mds.common.valueobjects.statemachine;
 
-import java.util.HashMap;
+import de.hsbremen.mds.common.whiteboard.Whiteboard;
 
 public class MdsTrigger {
 	
-	private HashMap<String, MdsAttribute> attributes;
+	private Whiteboard attributes;
 	
-	public MdsTrigger() {
-		attributes = new HashMap<String, MdsAttribute>();
+	public MdsTrigger(Whiteboard wb) {
+		attributes = wb;
 	}
 	
 
-	public void setAttribute(MdsAttribute attribute, String name) {
-		this.attributes.put(name, attribute);
-	}
 	
-	public MdsAttribute getAttribute(String name){
-		return this.attributes.get(name);
+	public Whiteboard getAttributes(){
+		return attributes;
 	}
 	
 

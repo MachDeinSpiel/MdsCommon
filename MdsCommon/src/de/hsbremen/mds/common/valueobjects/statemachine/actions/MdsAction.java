@@ -8,6 +8,18 @@ import java.util.HashMap;
 
 public class MdsAction {
 	
+	//Enum für alle gültigen Idents
+	public static enum MdsActionIdents {
+		showVideo,
+		showMap,
+		showText,
+		showImage,
+		addToGroup,
+		removeFromGroup
+		
+		
+	}
+	
 	//Konstanten für HashMap-Keys
 	public static final String PARAM_URL = "url";
 	public static final String PARAM_TEXT = "text";

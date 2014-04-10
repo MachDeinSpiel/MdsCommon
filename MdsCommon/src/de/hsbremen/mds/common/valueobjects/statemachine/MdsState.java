@@ -1,6 +1,6 @@
 package de.hsbremen.mds.common.valueobjects.statemachine;
 
-import de.hsbremen.mds.common.interpreterParser.EventParser;
+
 import de.hsbremen.mds.common.valueobjects.statemachine.actions.MdsAction;
 import de.hsbremen.mds.common.whiteboard.Whiteboard;
 

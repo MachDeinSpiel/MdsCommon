@@ -1,6 +1,6 @@
 package de.hsbremen.mds.common.valueobjects.statemachine;
 
-import de.hsbremen.mds.interpreter.MdsEvent;
+
 
 
 /**

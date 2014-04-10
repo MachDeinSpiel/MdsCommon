@@ -7,19 +7,19 @@ public class MdsVideoAction implements MdsActionExecutable {
 
 	private static final String videoNotFoundURL = "http://thisvideoisnotfound.com";
 	private static final String textNotFound = "Es ist ein Fehler aufgetreten";
-	private static final String identNotFound = "Error";
+	private static final String titleNotFound = "Video";
 	
 	public MdsVideo vid;
 	
-	public MdsVideoAction(String ident, String url, String text) {	
+	public MdsVideoAction(String title, String url, String text) {	
 		
 		// set Name
-		String i = ident.equals("") ? identNotFound : ident;
+		String i = title.equals("") ? title : title;
 		// set URL
 		String u = url.equals("") ? videoNotFoundURL : url;
 		// set Text
 		String t = text.equals("") ? textNotFound : text;
-		vid = new MdsVideo(i, u, t);
+		vid = new MdsVideo(title, u, t);
 	}
 
 	@Override

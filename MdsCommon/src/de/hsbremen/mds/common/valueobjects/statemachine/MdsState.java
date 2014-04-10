@@ -1,7 +1,8 @@
 package de.hsbremen.mds.common.valueobjects.statemachine;
 
+import de.hsbremen.mds.common.interpreterParser.EventParser;
 import de.hsbremen.mds.common.valueobjects.statemachine.actions.MdsAction;
-import de.hsbremen.mds.interpreter.EventParser;
+import de.hsbremen.mds.common.whiteboard.Whiteboard;
 
 
 /**
@@ -19,6 +20,7 @@ public class MdsState {
 	private MdsAction startAction;
 	private MdsAction endAction;
 	private MdsTransition[] transitions;
+	private Whiteboard wb;
 	
 	public MdsState(int id, String name, MdsState parentState, MdsAction doAction, boolean startState, boolean finalState) {
 		this.setId(id);
@@ -31,14 +33,7 @@ public class MdsState {
 	
 	public MdsState checkEvents(){
 		
-		//TODO: die transitionen des Currentstate mit dem Eventparser auf erfüllung (.)(.) prüfen dann in den nächsten state wechseln und returnen 
-		for(MdsTransition t : transitions) {
-			if (EventParser.checkEvent(t.getEvent(), wb.itemList.items, pos)) {
-				notifyListeners(t.getTarget(), currentState);
-				return t.getTarget();
-			}
-		}
-		// wenn kein Event zutreffend war
+//		// wenn kein Event zutreffend war
 		return null;
 	}
 	

@@ -11,6 +11,7 @@ public class MdsTransition {
 	
 	private MdsState target;
 	private MdsEvent event;
+	private MdsCondition condition;
 	
 	public MdsTransition(MdsState target, MdsEvent event){
 		this.target = target;
@@ -35,5 +36,13 @@ public class MdsTransition {
 	
 	public void setEvent(MdsEvent event) {
 		this.event = event;
+	}
+
+	public MdsCondition getCondition() {
+		return condition;
+	}
+
+	public void setCondition(MdsCondition condition) {
+		this.condition = condition;
 	}
 }

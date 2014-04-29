@@ -4,6 +4,15 @@ import java.util.HashMap;
 
 public class MdsCondition {
 	
+	public static String EXISTS = "exists";
+	public static String ALL = "all";
+	public static String EQUALS = "equals";
+	public static String LOWEQUALS = "lowequals";
+	public static String HIGHEQUALS = "highequals";
+	public static String LOWER = "lower";
+	public static String HIGHER = "higher";
+	
+	
 	
 
 	private String name;

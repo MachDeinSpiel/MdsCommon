@@ -3,9 +3,19 @@ package de.hsbremen.mds.common.valueobjects.statemachine;
 import java.util.HashMap;
 
 public class MdsCondition {
+	
+	//Enum für alle gültigen Idents
+		public static enum MdsConditionIdent {
+			locationEvent,
+			uiEvent,
+			whiteboardEvent
+			
+			
+		}
 
 	private String name;
-	private HashMap<String, String> params;;
+	private HashMap<String, String> params;
+	private MdsConditionIdent ident;
 	
 	public MdsCondition(String name, HashMap<String, String> params) {
 		this.name = name;
@@ -23,6 +33,14 @@ public class MdsCondition {
 	}
 	public void setParams(HashMap<String, String> params) {
 		this.params = params;
+	}
+
+	public MdsConditionIdent getIdent() {
+		return ident;
+	}
+
+	public void setIdent(MdsConditionIdent ident) {
+		this.ident = ident;
 	}
 
 }

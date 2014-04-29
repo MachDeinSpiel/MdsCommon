@@ -1,8 +1,10 @@
 package de.hsbremen.mds.common.valueobjects.statemachine;
 
 
+import java.util.List;
+
 import de.hsbremen.mds.common.valueobjects.statemachine.actions.MdsAction;
-import de.hsbremen.mds.common.whiteboard.Whiteboard;
+import de.hsbremen.mds.common.whiteboard.WhiteboardEntry;
 
 
 /**
@@ -20,7 +22,8 @@ public class MdsState {
 	private MdsAction startAction;
 	private MdsAction endAction;
 	private MdsTransition[] transitions;
-	private Whiteboard wb;
+	private List<WhiteboardEntry> subjects;
+	private List<WhiteboardEntry> objects;
 	
 	public MdsState(int id, String name, MdsState parentState, MdsAction doAction, boolean startState, boolean finalState) {
 		this.setId(id);
@@ -95,6 +98,22 @@ public class MdsState {
 
 	public void setParentState(MdsState parentState) {
 		this.parentState = parentState;
+	}
+
+	public List<WhiteboardEntry> getSubjects() {
+		return subjects;
+	}
+
+	public void setSubjects(List<WhiteboardEntry> subjects) {
+		this.subjects = subjects;
+	}
+
+	public List<WhiteboardEntry> getObjects() {
+		return objects;
+	}
+
+	public void setObjects(List<WhiteboardEntry> objects) {
+		this.objects = objects;
 	}
 
 }

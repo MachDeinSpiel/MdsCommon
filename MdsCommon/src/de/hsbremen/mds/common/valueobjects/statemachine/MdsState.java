@@ -1,40 +1,30 @@
 package de.hsbremen.mds.common.valueobjects.statemachine;
 
-
 import de.hsbremen.mds.common.valueobjects.statemachine.actions.MdsAction;
-import de.hsbremen.mds.common.whiteboard.Whiteboard;
-
 
 /**
- * @author JW, JG, NH, SE, AB, RS, OT
+ * @author JG, NH, JW, SE, AB, RS, OT
  */
 
 public class MdsState {
 	
 	private int id;
 	private String name;
-	private MdsState parentState;		
+	private String parentState;		// später MdsState?
 	private boolean startState;
 	private boolean finalsState;
 	private MdsAction doAction;
 	private MdsAction startAction;
 	private MdsAction endAction;
 	private MdsTransition[] transitions;
-	private Whiteboard wb;
 	
-	public MdsState(int id, String name, MdsState parentState, MdsAction doAction, boolean startState, boolean finalState) {
+	public MdsState(int id, String name, String parentState, MdsAction doAction, boolean startState, boolean finalState) {
 		this.setId(id);
 		this.name = name;
 		this.setParentState(parentState);
 		this.setDoAction(doAction);
 		this.setStartState(startState);
 		this.setFinalState(finalState);
-	}
-	
-	public MdsState checkEvents(){
-		
-//		// wenn kein Event zutreffend war
-		return null;
 	}
 	
 	public int getId() {
@@ -89,11 +79,11 @@ public class MdsState {
 		this.transitions = transitions;
 	}
 
-	public MdsState getParentState() {
+	public String getParentState() {
 		return parentState;
 	}
 
-	public void setParentState(MdsState parentState) {
+	public void setParentState(String parentState) {
 		this.parentState = parentState;
 	}
 

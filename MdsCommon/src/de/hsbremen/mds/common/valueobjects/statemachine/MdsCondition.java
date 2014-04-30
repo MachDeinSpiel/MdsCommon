@@ -16,9 +16,9 @@ public class MdsCondition {
 	
 
 	private String name;
-	private HashMap<String, String> params;
+	private HashMap<String, Object> params;
 	
-	public MdsCondition(String name, HashMap<String, String> params) {
+	public MdsCondition(String name, HashMap<String, Object> params) {
 		this.name = name;
     	this.params = params;
 	}
@@ -29,10 +29,10 @@ public class MdsCondition {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public HashMap<String, String> getParams() {
+	public HashMap<String, Object> getParams() {
 		return params;
 	}
-	public void setParams(HashMap<String, String> params) {
+	public void setParams(HashMap<String, Object> params) {
 		this.params = params;
 	}
 

@@ -1,6 +1,6 @@
 package de.hsbremen.mds.common.valueobjects;
 
-import java.util.HashMap;
+import de.hsbremen.mds.common.valueobjects.statemachine.MdsQuantifier;
 
 /**
  * @author AndroidDeppen
@@ -8,17 +8,26 @@ import java.util.HashMap;
  */
 public class MdsObject {
 
-	public HashMap<String, MdsObject> attributes;
-	// 0: nicht sichtbar, 1: für alle sichtbar, ID der jeweileigen Gruppe um diese sehen zulassen
-	public int visibility;
+	private String name;
+	private MdsQuantifier quantifier;
 	
-	public MdsObject(HashMap<String, MdsObject> attributes, int visibility){
-		this.attributes = attributes;
-		this.visibility = visibility;
+	public MdsObject(String name, MdsQuantifier quanti) {
+		this.name = name;
+		this.quantifier = quanti;
 	}
 	
-	public void addAttribute(String name, MdsObject value) {
-		attributes.put(name, value);
+	public MdsQuantifier getQuantifier() {
+		return quantifier;
 	}
+	public void setQuantifier(MdsQuantifier quantifier) {
+		this.quantifier = quantifier;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	
 	
 }

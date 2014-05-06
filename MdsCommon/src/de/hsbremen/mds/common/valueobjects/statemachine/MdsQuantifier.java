@@ -2,6 +2,14 @@ package de.hsbremen.mds.common.valueobjects.statemachine;
 
 public class MdsQuantifier {
 
+	public static String EXISTS = "exists";
+	public static String ALL = "all";
+	public static String EQUALS = "equals";
+	public static String LOWEQUALS = "lowequals";
+	public static String HIGHEQUALS = "highequals";
+	public static String LOWER = "lower";
+	public static String HIGHER = "higher";
+	
 	private String checktype;
 	private String value;
 	

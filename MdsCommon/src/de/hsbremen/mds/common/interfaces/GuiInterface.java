@@ -15,6 +15,8 @@ public interface GuiInterface {
         void nextFragment(MdsVideo mds);
         void nextFragment(MdsText mds);
         void nextFragment(MdsMap mds);
+        
+        void getServerData(String type, int id);
  
         
         void update();

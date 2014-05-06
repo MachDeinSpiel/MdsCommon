@@ -1,8 +1,5 @@
 package de.hsbremen.mds.common.valueobjects.statemachine;
 
-
-
-
 /**
  * @author JG, NH, JW, SE, AB, RS, OT
  */
@@ -10,19 +7,13 @@ package de.hsbremen.mds.common.valueobjects.statemachine;
 public class MdsTransition {
 	
 	private MdsState target;
-	private MdsCondition condition;
-	private EventType eventType;
+	private MdsEvent event;
+	private String eventName;
 	
-	//Enum für alle gültigen Idents
-	public static enum EventType {
-		locationEvent,
-		uiEvent,
-		whiteboardEvent	
-	}
-	
-	public MdsTransition(MdsState target, EventType eventType){
+	public MdsTransition(MdsState target, MdsEvent event, String eventName){
 		this.target = target;
-		this.setEventType(eventType);
+		this.setEvent(event);
+		this.setEventName(eventName);
 	}
 	
 	public MdsTransition(MdsState target){
@@ -37,19 +28,19 @@ public class MdsTransition {
 		this.target = target;
 	}
 	
-	public EventType getEventType() {
-		return eventType;
+	public MdsEvent getEvent() {
+		return event;
 	}
 	
-	public void setEventType(EventType eventType) {
-		this.eventType = eventType;
+	public void setEvent(MdsEvent event) {
+		this.event = event;
 	}
 
-	public MdsCondition getCondition() {
-		return condition;
+	public String getEventName() {
+		return eventName;
 	}
 
-	public void setCondition(MdsCondition condition) {
-		this.condition = condition;
+	public void setEventName(String eventName) {
+		this.eventName = eventName;
 	}
 }

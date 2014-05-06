@@ -10,7 +10,6 @@ import de.hsbremen.mds.common.whiteboard.WhiteboardEntry;
 public interface ComServerInterface {
 	   public void onWhiteboardUpdate(List<String> keys, WhiteboardEntry value);
 	   public void onFullWhiteboardUpdate(Whiteboard newWhiteboard);
-	   public void onWhiteboardUpdate(List<String> keys, WhiteboardEntry value, WebSocket conn);
-	   public void onFullWhiteboardUpdate(Whiteboard newWhiteboard, WebSocket conn);
+	   public void onWhiteboardUpdate(WebSocket conn, String value, String visibillity, String... keys);
 
 }

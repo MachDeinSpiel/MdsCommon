@@ -2,23 +2,13 @@ package de.hsbremen.mds.common.valueobjects.statemachine;
 
 import java.util.HashMap;
 
+
 /**
  * @author JG, NH, JW, SE, AB, RS, OT
  */
 
 public class MdsEvent {
-	
-	private HashMap<Object, Object> event;
-	
-	public MdsEvent(HashMap<Object, Object> event) {
-		this.event = event;
-	}
-	
-	public HashMap<Object, Object> getEvent() {
-		return event;
-	}
-	
-	/*
+		
 	private String type;
 	private String name;
 	private HashMap<String, String> params;
@@ -56,6 +46,5 @@ public class MdsEvent {
 	public void setTrigger(MdsTrigger trigger) {
 		this.trigger = trigger;
 	}
-	*/
 	
 }

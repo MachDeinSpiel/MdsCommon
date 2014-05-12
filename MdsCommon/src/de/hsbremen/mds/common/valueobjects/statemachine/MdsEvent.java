@@ -13,8 +13,6 @@ public class MdsEvent {
 	private String name;
 	private HashMap<String, String> params;
 	
-	//Trigger-Object. Bleibt zunächst Null, wird beim Eintreten eines Events gesetzt
-	private MdsTrigger trigger;
 	
 	public MdsEvent(String type, String name, HashMap<String, String> params){
     	this.type = type;
@@ -40,11 +38,6 @@ public class MdsEvent {
 	public void setParams(HashMap<String, String> params) {
 		this.params = params;
 	}
-	public MdsTrigger getTrigger() {
-		return trigger;
-	}
-	public void setTrigger(MdsTrigger trigger) {
-		this.trigger = trigger;
-	}
+
 	
 }

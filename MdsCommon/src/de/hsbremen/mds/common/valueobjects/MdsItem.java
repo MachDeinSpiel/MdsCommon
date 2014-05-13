@@ -1,18 +1,12 @@
 package de.hsbremen.mds.common.valueobjects;
 
-import java.io.Serializable;
-
 /**
  * @author chumbawamba!
  */
 
 //TODO: diese Klasse löschen
-public class MdsItem implements Serializable{
+public class MdsItem {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -4299417337934597749L;
 	private String name;
 	private String imagePath;
 	

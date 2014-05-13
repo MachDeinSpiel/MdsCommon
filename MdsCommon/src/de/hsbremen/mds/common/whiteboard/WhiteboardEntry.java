@@ -1,7 +1,5 @@
 package de.hsbremen.mds.common.whiteboard;
 
-import java.io.Serializable;
-
 /**
  * 
  * Eintrag in ein Whiteboard, bestehend aus einem Wert (value), der 
@@ -11,13 +9,7 @@ import java.io.Serializable;
  * @author Interpreter
  *
  */
-public class WhiteboardEntry implements Serializable {
-	
-	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -8411200425558570022L;
+public class WhiteboardEntry {
 	
 	public Object value;
 	public String visibility;

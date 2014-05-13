@@ -3,12 +3,18 @@
  */
 package de.hsbremen.mds.common.valueobjects;
 
+import java.io.Serializable;
+
 /**
  * @author AndroidDeppen
  * Klasse für MDS-Objekte
  */
-public class MdsImage {
+public class MdsImage implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1549813321174760151L;
 	String name;
 	String url;
 	String text;

@@ -3,12 +3,18 @@
  */
 package de.hsbremen.mds.common.valueobjects;
 
+import java.io.Serializable;
+
 /**
  * @author AndroidDeppen
  * Klasse für MDS-Objekte
  */
-public class MdsMap {
+public class MdsMap implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 631496132013972716L;
 	String name;
 	String url;
 	String text;

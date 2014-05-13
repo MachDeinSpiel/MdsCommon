@@ -1,4 +1,8 @@
-package de.hsbremen.mds.common.listener;
+package de.hsbremen.mds.common.interfaces;
+
+import java.util.List;
+
+import de.hsbremen.mds.common.whiteboard.WhiteboardEntry;
 
 public interface AndroidListener {
 	
@@ -7,6 +11,8 @@ public interface AndroidListener {
     public void onUserLeftGame(int id);
     
     public void onPositionChanged(double longitude, double latitude);
+    
+    public void updateLocalWhiteboard(List<String> keys, WhiteboardEntry entry);
 }
 
 /*

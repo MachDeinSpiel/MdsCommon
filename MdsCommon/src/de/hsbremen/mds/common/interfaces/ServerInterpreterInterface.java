@@ -6,6 +6,13 @@ import org.java_websocket.WebSocket;
 
 import de.hsbremen.mds.common.whiteboard.WhiteboardEntry;
 
+/**
+ * 
+ * @author ConnectionGroup
+ * 
+ * Für den Client - Der Interpreter-Client ruft onWhiteboardUpdate() vom "Android" auf
+ *
+ */
 public interface ServerInterpreterInterface{
-    public void onWhiteboardUpdate(WebSocket conn, List<String> keys, WhiteboardEntry value);
+    public void onWhiteboardUpdate(List<String> keys, WhiteboardEntry value);
 }

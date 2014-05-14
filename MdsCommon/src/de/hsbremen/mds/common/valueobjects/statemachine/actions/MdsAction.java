@@ -15,7 +15,10 @@ public class MdsAction {
 		showText,
 		showImage,
 		addToGroup,
-		removeFromGroup
+		removeFromGroup,
+		changeAttribute,
+		useItem,
+		updateMap
 		
 		
 	}

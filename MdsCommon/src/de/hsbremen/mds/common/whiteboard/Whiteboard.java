@@ -69,5 +69,18 @@ public class Whiteboard extends HashMap<String, WhiteboardEntry>{
 		return wb.get(keys[keys.length-1]);
 	}
 	
+	/**
+	 * Löscht einen Attribut sammt aller Unterattribute
+	 * @param keys Schlüssel für das zu löschende Attribut, entweder als einzelne Attribute oder als String-Array
+	 */
+	public void deleteAttribute(String... keys){
+		Whiteboard wb = this;
+		for (int i = 0; i < keys.length-1; i++) {
+			wb = (Whiteboard) wb.get(keys[i]).value;
+		}
+		
+		wb.remove(keys[keys.length-1]);
+	}
+	
 
 }

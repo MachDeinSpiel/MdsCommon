@@ -3,11 +3,13 @@
  */
 package de.hsbremen.mds.common.valueobjects;
 
+import java.io.Serializable;
+
 /**
  * @author AndroidDeppen
  * Klasse für MDS-Objekte
  */
-public class MdsImage {
+public class MdsImage{
 
 	String name;
 	String url;

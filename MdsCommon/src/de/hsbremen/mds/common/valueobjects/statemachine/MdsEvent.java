@@ -13,7 +13,6 @@ public class MdsEvent {
 	private String name;
 	private HashMap<String, String> params;
 	
-	
 	public MdsEvent(String type, String name, HashMap<String, String> params){
     	this.type = type;
     	this.name = name;
@@ -38,6 +37,5 @@ public class MdsEvent {
 	public void setParams(HashMap<String, String> params) {
 		this.params = params;
 	}
-
 	
 }

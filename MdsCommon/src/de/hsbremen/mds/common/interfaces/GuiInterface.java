@@ -1,6 +1,9 @@
 package de.hsbremen.mds.common.interfaces;
 
 
+import java.util.ArrayList;
+
+import de.hsbremen.mds.common.guiobjects.MdsItem;
 import de.hsbremen.mds.common.valueobjects.MdsImage;
 import de.hsbremen.mds.common.valueobjects.MdsMap;
 import de.hsbremen.mds.common.valueobjects.MdsText;
@@ -15,7 +18,9 @@ public interface GuiInterface {
         void nextFragment(MdsMap mds);
         
         void getServerData(String type, int id);
- 
+        
+        void showMap(ArrayList<MdsItem> items2display);
+        void addToBackpack(MdsItem item);
         
         void update();
 }

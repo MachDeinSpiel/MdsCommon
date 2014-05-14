@@ -1,4 +1,4 @@
-package de.hsbremen.mds.common.valueobjects;
+package de.hsbremen.mds.common.guiobjects;
 
 import java.io.Serializable;
 
@@ -7,14 +7,12 @@ import java.io.Serializable;
  */
 
 //TODO: diese Klasse löschen
-public class MdsItem implements Serializable{
+public class MdsItem{
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -4299417337934597749L;
 	private String name;
 	private String imagePath;
+	private double longitude;
+	private double latitude;
 	
 	public MdsItem(String name, String imagePath) {
 			this.name = name;
@@ -32,5 +30,21 @@ public class MdsItem implements Serializable{
 	}
 	public void setImagePath(String imagePath) {
 		this.imagePath = imagePath;
+	}
+
+	public double getLongitude() {
+		return longitude;
+	}
+
+	public void setLongitude(double longitude) {
+		this.longitude = longitude;
+	}
+
+	public double getLatitude() {
+		return latitude;
+	}
+
+	public void setLatitude(double latitude) {
+		this.latitude = latitude;
 	}
 }

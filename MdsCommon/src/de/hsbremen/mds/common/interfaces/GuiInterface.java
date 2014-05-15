@@ -17,8 +17,6 @@ public interface GuiInterface {
         void nextFragment(MdsText mds);
         void nextFragment(MdsMap mds);
         
-        void getServerData(String type, int id);
-        
         void showMap(ArrayList<MdsItem> items2display);
         void addToBackpack(MdsItem item);
         

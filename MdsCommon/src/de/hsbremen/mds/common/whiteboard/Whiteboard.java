@@ -1,5 +1,6 @@
 package de.hsbremen.mds.common.whiteboard;
 
+import java.util.Arrays;
 import java.util.HashMap;
 /**
  * 
@@ -16,8 +17,12 @@ public class Whiteboard extends HashMap<String, WhiteboardEntry>{
 	 * @param value Wert, den das Attribut erhalten soll
 	 * @param keys Schlüssel für das Whiteboard, entweder als einzelne Attribute oder als String-Array
 	 */
-	public void setAttributeValue(Object value, String... keys){
-		getAttribute(keys).value = value;
+	public void setAttributeValue(Object value, String... keys) throws InvalidWhiteboardEntryException{
+		if(!(value instanceof String || value instanceof Whiteboard)){
+			throw new InvalidWhiteboardEntryException(value);
+		}else{
+			getAttribute(keys).value = value;
+		}
 	}
 	
 	
@@ -29,12 +34,17 @@ public class Whiteboard extends HashMap<String, WhiteboardEntry>{
 	 * @param keys Schlüssel für das Whiteboard, entweder als einzelne Attribute oder als String-Array
 	 */
 	public void setAttribute(WhiteboardEntry attribute, String... keys){
+		
 		Whiteboard wb = this;
 		
 		for (int i = 0; i < keys.length-1; i++) {
 			if(!wb.containsKey(keys[i])){
 				Whiteboard newWb = new Whiteboard();
-				wb.put(keys[i], new WhiteboardEntry(newWb, "none"));	//TODO: Visibility besser setzen
+				try {
+					wb.put(keys[i], new WhiteboardEntry(newWb, "none")); //TODO: Visibility besser setzen
+				} catch (InvalidWhiteboardEntryException e) {
+					e.printStackTrace();
+				}	
 				wb = newWb;
 			}
 		}
@@ -63,7 +73,18 @@ public class Whiteboard extends HashMap<String, WhiteboardEntry>{
 		Whiteboard wb = this;
 		
 		for (int i = 0; i < keys.length-1; i++) {
-			wb = (Whiteboard) wb.get(keys[i]).value;
+			WhiteboardEntry wbe =  wb.get(keys[i]);
+			if(wbe == null){
+				String allKeys = "";
+				for(String key : keys){
+					allKeys += "."+key;
+				}
+				System.err.println("Error. No key ["+keys[i]+"] found in Whiteboard. All keys:"+allKeys);
+				return null;
+			}else{
+				wb = (Whiteboard)wbe.value;
+			}
+			
 		}
 		
 		return wb.get(keys[keys.length-1]);
@@ -76,7 +97,17 @@ public class Whiteboard extends HashMap<String, WhiteboardEntry>{
 	public void deleteAttribute(String... keys){
 		Whiteboard wb = this;
 		for (int i = 0; i < keys.length-1; i++) {
-			wb = (Whiteboard) wb.get(keys[i]).value;
+			WhiteboardEntry wbe =  wb.get(keys[i]);
+			if(wbe == null){
+				String allKeys = "";
+				for(String key : keys){
+					allKeys += "."+key;
+				}
+				System.err.println("Error. No key ["+keys[i]+"] found in Whiteboard while deleting "+allKeys);
+				return;
+			}else{
+				wb = (Whiteboard) wbe.value;
+			}
 		}
 		
 		wb.remove(keys[keys.length-1]);

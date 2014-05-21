@@ -3,13 +3,14 @@ package de.hsbremen.mds.common.communication;
 import java.util.List;
 import java.util.Vector;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import de.hsbremen.mds.common.exception.UnknownWhiteboardTypeException;
 import de.hsbremen.mds.common.whiteboard.InvalidWhiteboardEntryException;
 import de.hsbremen.mds.common.whiteboard.WhiteboardEntry;
-import de.hsbremen.mds.common.whiteboard.WhiterboardUpdateObject;
+import de.hsbremen.mds.common.whiteboard.WhiteboardUpdateObject;
 
 public class EntryHandler {
 
@@ -17,49 +18,69 @@ public class EntryHandler {
 
 	}
 
-	public static WhiterboardUpdateObject toObject(String message) {
-		List<String> keys = new Vector<String>();
-		WhiteboardEntry entry = null;
+	public static List<WhiteboardUpdateObject> toObject(String message) {
+
+		List<WhiteboardUpdateObject> wb = new Vector<WhiteboardUpdateObject>();
+
+
 		try {
 			JSONObject json = new JSONObject(message);
 
-			String path = json.getString("path");
-			String visibility = json.getString("visibility");
-
-			String vType = json.getString("valuetype");
-
-			try {
-				if (vType.equals(Integer.class.getName()))
-					entry = new WhiteboardEntry(json.getInt("value"),
-							visibility);
-				else if (vType.equals(Long.class.getName()))
-					entry = new WhiteboardEntry(json.getLong("value"),
-							visibility);
-				else if (vType.equals(Double.class.getName()))
-					entry = new WhiteboardEntry(json.getDouble("value"),
-							visibility);
-				else if (vType.equals(Boolean.class.getName()))
-					entry = new WhiteboardEntry(json.getBoolean("value"),
-							visibility);
-				else if (vType.equals(String.class.getName()))
-					entry = new WhiteboardEntry(json.getString("value"),
-							visibility);
-			} catch (InvalidWhiteboardEntryException e) {
-				// Falsche Objekte Ÿbergeben
-				e.printStackTrace();
-			}
-			String[] parts = path.split(",");
-			for (int i = 0; i < parts.length; i++) {
-				keys.add(parts[i]);
+			if (json.get("updatemode").equals("single")) {
+				wb.add(toWhiteboardObject(message));
+			} else if(json.get("updatemode").equals("full")){
+				JSONArray arr = (JSONArray) json.get("data");
+				for(int i = 0; i < arr.length(); i++){
+					wb.add(toWhiteboardObject(arr.get(i).toString()));
+				}
 			}
 
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
 
-		return new WhiterboardUpdateObject(keys, entry);
+		return wb;
 	}
 
+	private static WhiteboardUpdateObject toWhiteboardObject(String message){
+
+		JSONObject json = new JSONObject();
+		List<String> keys = new Vector<String>();
+		WhiteboardEntry entry = null;
+		
+		String path = json.getString("path");
+		String visibility = json.getString("visibility");
+
+		String vType = json.getString("valuetype");
+
+		try {
+			if (vType.equals(Integer.class.getName()))
+				entry = new WhiteboardEntry(json.getInt("value"),
+						visibility);
+			else if (vType.equals(Long.class.getName()))
+				entry = new WhiteboardEntry(json.getLong("value"),
+						visibility);
+			else if (vType.equals(Double.class.getName()))
+				entry = new WhiteboardEntry(json.getDouble("value"),
+						visibility);
+			else if (vType.equals(Boolean.class.getName()))
+				entry = new WhiteboardEntry(json.getBoolean("value"),
+						visibility);
+			else if (vType.equals(String.class.getName()))
+				entry = new WhiteboardEntry(json.getString("value"),
+						visibility);
+		} catch (InvalidWhiteboardEntryException e) {
+			// Falsche Objekte Ÿbergeben
+			e.printStackTrace();
+		}
+		String[] parts = path.split(",");
+		for (int i = 0; i < parts.length; i++) {
+			keys.add(parts[i]);
+		}
+		
+		return new WhiteboardUpdateObject(keys, entry);
+	} 
+	
 	public static String toJson(List<String> keys, WhiteboardEntry entry)
 			throws UnknownWhiteboardTypeException {
 
@@ -76,6 +97,7 @@ public class EntryHandler {
 		}
 
 		try {
+			json.put("updatemode", "single");
 			json.put("path", result);
 			json.put("visibility", entry.visibility);
 			json.put("valuetype", entry.value.getClass().getName());
@@ -94,6 +116,27 @@ public class EntryHandler {
 				throw new UnknownWhiteboardTypeException(entry.value.getClass()
 						.getName());
 
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+
+		return json.toString();
+	}
+
+	public static String toJson(List<WhiteboardUpdateObject> wb)
+			throws UnknownWhiteboardTypeException {
+
+		JSONObject json = new JSONObject();
+		JSONArray arr = new JSONArray();
+		
+		try {
+			json.put("updatemode", "full");
+
+			for (WhiteboardUpdateObject wuObj : wb) {
+				arr.put(toJson(wuObj.getKeys(), wuObj.getValue()));
+			}
+
+			json.put("data", arr);
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}

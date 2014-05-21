@@ -10,7 +10,6 @@ import de.hsbremen.mds.common.valueobjects.MdsText;
 import de.hsbremen.mds.common.valueobjects.MdsVideo;
 
 public interface GuiInterface {
-        void setAndroidListener(AndroidListener listener, double positionsIntervall);
 
         void nextFragment(MdsImage mds);
         void nextFragment(MdsVideo mds);

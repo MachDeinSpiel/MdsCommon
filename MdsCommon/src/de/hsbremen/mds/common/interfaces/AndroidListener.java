@@ -16,4 +16,5 @@ public interface AndroidListener {
     public void updateLocalWhiteboard(List<String> keys, WhiteboardEntry entry);
     
     public void useItem(MdsItem item);
+    public void dropItem(MdsItem item);
 }

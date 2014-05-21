@@ -6,6 +6,7 @@ import org.java_websocket.WebSocket;
 import org.java_websocket.handshake.ClientHandshake;
 
 import de.hsbremen.mds.common.whiteboard.WhiteboardEntry;
+import de.hsbremen.mds.common.whiteboard.WhiteboardUpdateObject;
 
 /**
  * 
@@ -16,5 +17,6 @@ import de.hsbremen.mds.common.whiteboard.WhiteboardEntry;
  */
 public interface ComServerInterface {
 	   public void onWhiteboardUpdate(WebSocket conn, List<String> keys, WhiteboardEntry value);
+	   public void onFullWhiteboardUpdate(WebSocket conn, List<WhiteboardUpdateObject> wb);
 	   public boolean onNewConnection(WebSocket conn, ClientHandshake handshake);
 }

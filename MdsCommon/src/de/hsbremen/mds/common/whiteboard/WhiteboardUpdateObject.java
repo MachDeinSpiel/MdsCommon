@@ -4,12 +4,12 @@ import java.util.List;
 /*
  * Klasse für die Übertragungen zwischen Server und Android, der Whiteboardeinträge als ein Objekt
  */
-public class WhiterboardUpdateObject {
+public class WhiteboardUpdateObject {
 
 	private List<String> keys; 
 	private WhiteboardEntry value;
 	
-	public WhiterboardUpdateObject(List<String> keys, WhiteboardEntry value){
+	public WhiteboardUpdateObject(List<String> keys, WhiteboardEntry value){
 		this.keys = keys;
 		this.value = value;
 	}

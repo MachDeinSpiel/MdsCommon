@@ -120,6 +120,7 @@ public class EntryHandler {
 			e.printStackTrace();
 		}
 
+		//System.out.println(json.toString());
 		return json.toString();
 	}
 
@@ -133,14 +134,14 @@ public class EntryHandler {
 			json.put("updatemode", "full");
 
 			for (WhiteboardUpdateObject wuObj : wb) {
-				arr.put(toJson(wuObj.getKeys(), wuObj.getValue()));
+				arr.put(new JSONObject(toJson(wuObj.getKeys(), wuObj.getValue())));
 			}
 
 			json.put("data", arr);
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
-
+		//System.out.println(json.toString());
 		return json.toString();
 	}
 }

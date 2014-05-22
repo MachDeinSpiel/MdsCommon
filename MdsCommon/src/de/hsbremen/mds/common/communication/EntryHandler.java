@@ -22,7 +22,6 @@ public class EntryHandler {
 
 		List<WhiteboardUpdateObject> wb = new Vector<WhiteboardUpdateObject>();
 
-
 		try {
 			JSONObject json = new JSONObject(message);
 
@@ -44,7 +43,7 @@ public class EntryHandler {
 
 	private static WhiteboardUpdateObject toWhiteboardObject(String message){
 
-		JSONObject json = new JSONObject();
+		JSONObject json = new JSONObject(message);
 		List<String> keys = new Vector<String>();
 		WhiteboardEntry entry = null;
 		
@@ -77,7 +76,6 @@ public class EntryHandler {
 		for (int i = 0; i < parts.length; i++) {
 			keys.add(parts[i]);
 		}
-		
 		return new WhiteboardUpdateObject(keys, entry);
 	} 
 	

@@ -46,6 +46,8 @@ public class Whiteboard extends HashMap<String, WhiteboardEntry>{
 					e.printStackTrace();
 				}	
 				wb = newWb;
+			}else{
+				wb = (Whiteboard)(wb.getAttribute(keys[i]).value);
 			}
 		}
 		wb.put(keys[keys.length-1], attribute);
@@ -87,7 +89,15 @@ public class Whiteboard extends HashMap<String, WhiteboardEntry>{
 			
 		}
 		
-		return wb.get(keys[keys.length-1]);
+		WhiteboardEntry result = wb.get(keys[keys.length-1]);
+		if(result == null){
+			String allKeys = "";
+			for(String key : keys){
+				allKeys += "."+key;
+			}
+			System.err.println("Error. No key ["+keys[keys.length-1]+"] found in Whiteboard. All keys:"+allKeys+". Returning null, an excpetion might be thrown.");
+		}
+		return result;
 	}
 	
 	/**

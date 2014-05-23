@@ -71,7 +71,10 @@ public class Whiteboard extends HashMap<String, WhiteboardEntry>{
 	 * @return
 	 */
 	public WhiteboardEntry getAttribute(String... keys){
-		
+		if(keys.length <= 0){
+			System.err.println("Error: No key given for getting WhiteboardAttribute, please give at least one key.");
+			return null;
+		}
 		Whiteboard wb = this;
 		
 		for (int i = 0; i < keys.length-1; i++) {

@@ -21,7 +21,16 @@ public class Whiteboard extends HashMap<String, WhiteboardEntry>{
 		if(!(value instanceof String || value instanceof Whiteboard)){
 			throw new InvalidWhiteboardEntryException(value);
 		}else{
-			getAttribute(keys).value = value;
+			WhiteboardEntry wbe = getAttribute(keys);
+			if(wbe != null){
+				wbe.value = value;
+			}else{
+				String keyString = "";
+				for(String k : keys){
+					keyString+= "."+k;
+				}
+				System.err.println("Error in whiteboard: can't setAttribute, keys ["+keyString+"]");
+			}
 		}
 	}
 	

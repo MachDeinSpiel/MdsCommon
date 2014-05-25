@@ -21,4 +21,5 @@ public interface ClientInterpreterInterface {
     
     public void useItem(MdsItem item);
     public void dropItem(MdsItem item);
+	public void onMinigameResult(int punkte, boolean gewonnen);
 }

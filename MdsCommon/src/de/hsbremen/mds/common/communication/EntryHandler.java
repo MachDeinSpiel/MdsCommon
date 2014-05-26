@@ -25,9 +25,9 @@ public class EntryHandler {
 		try {
 			JSONObject json = new JSONObject(message);
 
-			if (json.get("updatemode").equals("single")) {
+			if (json.get("mode").equals("single")) {
 				wb.add(toWhiteboardObject(message));
-			} else if(json.get("updatemode").equals("full")){
+			} else if(json.get("mode").equals("full")){
 				JSONArray arr = (JSONArray) json.get("data");
 				for(int i = 0; i < arr.length(); i++){
 					wb.add(toWhiteboardObject(arr.get(i).toString()));
@@ -95,7 +95,7 @@ public class EntryHandler {
 		}
 
 		try {
-			json.put("updatemode", "single");
+			json.put("mode", "single");
 			json.put("path", result);
 			json.put("visibility", entry.visibility);
 			json.put("valuetype", entry.value.getClass().getName());
@@ -129,7 +129,7 @@ public class EntryHandler {
 		JSONArray arr = new JSONArray();
 		
 		try {
-			json.put("updatemode", "full");
+			json.put("mode", "full");
 
 			for (WhiteboardUpdateObject wuObj : wb) {
 				arr.put(new JSONObject(toJson(wuObj.getKeys(), wuObj.getValue())));

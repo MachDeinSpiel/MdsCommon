@@ -19,6 +19,8 @@ public interface ClientInterpreterInterface {
     public void onWhiteboardUpdate(List<String> keys, WhiteboardEntry entry);
     public void onFullWhiteboardUpdate(List<WhiteboardUpdateObject> wb);
     
+    public void onMinigameResult(int punkte, boolean gewonnen);
+    
     public void useItem(MdsItem item);
     public void dropItem(MdsItem item);
 }

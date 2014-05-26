@@ -8,7 +8,7 @@ import de.hsbremen.mds.common.valueobjects.statemachine.MdsState;
  */
 public interface FsmInterface {
 	
-	void onStateChange();
+	void onStateChange(String setTo);
 
 	
 	

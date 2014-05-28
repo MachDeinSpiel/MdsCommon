@@ -12,9 +12,9 @@ import de.hsbremen.mds.common.whiteboard.InvalidWhiteboardEntryException;
 import de.hsbremen.mds.common.whiteboard.WhiteboardEntry;
 import de.hsbremen.mds.common.whiteboard.WhiteboardUpdateObject;
 
-public class EntryHandler {
+public class WhiteboardHandler {
 
-	private EntryHandler() {
+	private WhiteboardHandler() {
 
 	}
 

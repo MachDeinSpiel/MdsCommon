@@ -20,7 +20,7 @@ public class WhiteboardEntry implements Serializable {
 	private static final long serialVersionUID = -8411200425558570022L;
 	
 	public Object value;
-	public String visibility;
+	public String visibility = "all";
 	
 	public WhiteboardEntry(Object value, String visibility) throws InvalidWhiteboardEntryException{
 		if(!(value instanceof String || value instanceof Whiteboard)){

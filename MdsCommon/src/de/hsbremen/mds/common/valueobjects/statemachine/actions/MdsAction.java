@@ -18,8 +18,8 @@ public class MdsAction {
 		removeFromGroup,
 		changeAttribute,
 		useItem,
-		updateMap
-		
+		updateMap,
+		startMiniApp		
 		
 	}
 	
@@ -29,9 +29,9 @@ public class MdsAction {
 	public static final String PARAM_DUMMY = "target";
 	
 	private MdsActionIdent ident;
-	private HashMap<String, String> defaults;
+	private HashMap<String, Object> defaults;
 	
-	public MdsAction (MdsActionIdent ident,HashMap<String, String> params){
+	public MdsAction (MdsActionIdent ident,HashMap<String, Object> params){
 		this.ident = ident;
 		this.defaults = params;
 	}
@@ -42,10 +42,10 @@ public class MdsAction {
 	public void setIdent(MdsActionIdent ident) {
 		this.ident = ident;
 	}
-	public HashMap<String, String> getParams() {
+	public HashMap<String, Object> getParams() {
 		return defaults;
 	}
-	public void setParams(HashMap<String, String> params) {
+	public void setParams(HashMap<String, Object> params) {
 		this.defaults = params;
 	}
 	

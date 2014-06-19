@@ -24,5 +24,5 @@ public interface ClientInterpreterInterface {
     public void useItem(MdsItem item, String identifier);
     public void dropItem(MdsItem item);
     
-    public void onGameResult();
+    public void onGameResult(boolean hasWon, String identifier);
 }

@@ -10,7 +10,7 @@ package de.hsbremen.mds.common.valueobjects.statemachine;
 public class MdsTransition {
 	
 	private MdsState target;
-	private MdsCondition condition;
+	private MdsCondition[] condition;
 	private EventType eventType;
 	
 	//Enum für alle gültigen Idents
@@ -45,11 +45,11 @@ public class MdsTransition {
 		this.eventType = eventType;
 	}
 
-	public MdsCondition getCondition() {
+	public MdsCondition[] getCondition() {
 		return condition;
 	}
 
-	public void setCondition(MdsCondition condition) {
+	public void setCondition(MdsCondition[] condition) {
 		this.condition = condition;
 	}
 }

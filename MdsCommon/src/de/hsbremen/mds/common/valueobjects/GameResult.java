@@ -5,15 +5,16 @@ public class GameResult {
 	public String attribute;
 	public String setWin;
 	public String setLoose;
-	public double addWin = 0;
-	public double addLoose = 0;
+	public double addResult = 0;
+	public double factor = 1;
 	
-	public GameResult(String attribute, String setWin, String setLoos, double addWin, double addLoose) {
+	public GameResult(String attribute, String setWin, String setLoose, double addResult, double factor) {
 		this.attribute = attribute;
 		this.setWin = setWin;
-		this.setLoose = setLoos;
-		this.addWin = addWin;
-		this.addLoose = addLoose;
+		this.setLoose = setLoose;
+		this.addResult = addResult;
+		if(factor != 0)
+			this.factor = factor;
 	}
 
 }

@@ -49,7 +49,7 @@ public class MdsTransition {
 		return conditions;
 	}
 
-	public void setCondition(MdsCondition[] conditions) {
+	public void setConditions(MdsCondition[] conditions) {
 		this.conditions = conditions;
 	}
 }

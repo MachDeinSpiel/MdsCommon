@@ -17,7 +17,10 @@ public class MdsTransition {
 	public static enum EventType {
 		locationEvent,
 		uiEvent,
-		whiteboardEvent	
+		whiteboardEvent,
+		uiLocationEvent,
+		locationWhiteboardEvent,
+		uiWhiteboardEvent
 	}
 	
 	public MdsTransition(MdsState target, EventType eventType){

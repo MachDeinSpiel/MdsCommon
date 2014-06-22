@@ -135,5 +135,42 @@ public class Whiteboard extends HashMap<String, WhiteboardEntry>{
 		wb.remove(keys[keys.length-1]);
 	}
 	
+	/**
+	 * Gibt den Parent des Objectes zu welchem der Key-Pfad angegeben ist
+	 * @param key Schlüssel für das Objekt, dessen Parent zurückgegeben werden soll
+	 */
+	public WhiteboardEntry getParent(String... keys){
+		if(keys.length <= 0){
+			System.err.println("Error: No key given for getting WhiteboardAttribute, please give at least one key.");
+			return null;
+		}
+		Whiteboard wb = this;
+		
+		for (int i = 0; i < keys.length-2; i++) {
+			WhiteboardEntry wbe =  wb.get(keys[i]);
+			if(wbe == null){
+				String allKeys = "";
+				for(String key : keys){
+					allKeys += "."+key;
+				}
+				System.err.println("Error. No key ["+keys[i]+"] found in Whiteboard. All keys:"+allKeys);
+				return null;
+			}else{
+				wb = (Whiteboard)wbe.value;
+			}
+			
+		}
+		
+		WhiteboardEntry result = wb.get(keys[keys.length-2]);
+		if(result == null){
+			String allKeys = "";
+			for(String key : keys){
+				allKeys += "."+key;
+			}
+			System.err.println("Error. No key ["+keys[keys.length-1]+"] found in Whiteboard. All keys:"+allKeys+". Returning null, an excpetion might be thrown.");
+		}
+		return result;
+	}
+	
 
 }

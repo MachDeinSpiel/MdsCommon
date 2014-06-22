@@ -14,7 +14,8 @@ public class MdsInfoObject {
 		MdsText,
 		MdsImage,
 		MdsVideo,
-		MdsMap
+		MdsMap,
+		MdsMiniApp
 	}
 	
 	public MdsInfoObject(InfoType type, String name, String url, String text, List<String> buttons) {

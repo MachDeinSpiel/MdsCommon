@@ -19,17 +19,19 @@ public class MdsState {
 	private boolean startState;
 	private boolean finalsState;
 	private MdsAction doAction;
-	private MdsAction startAction;
+	private List<MdsAction> startActions;
 	private MdsAction endAction;
 	private MdsTransition[] transitions;
 	private List<WhiteboardEntry> subjects;
 	private List<WhiteboardEntry> objects;
 	
-	public MdsState(int id, String name, MdsState parentState, MdsAction doAction, boolean startState, boolean finalState) {
+	public MdsState(int id, String name, MdsState parentState, MdsAction doAction, List<MdsAction> startActions, MdsAction endAction, boolean startState, boolean finalState) {
 		this.setId(id);
 		this.name = name;
 		this.setParentState(parentState);
 		this.setDoAction(doAction);
+		this.setStartAction(startActions);
+		this.setEndAction(endAction);
 		this.setStartState(startState);
 		this.setFinalState(finalState);
 	}
@@ -73,11 +75,11 @@ public class MdsState {
 	public void setDoAction(MdsAction doAction) {
 		this.doAction = doAction;
 	}
-	public MdsAction getStartAction() {
-		return startAction;
+	public List<MdsAction> getStartAction() {
+		return startActions;
 	}
-	public void setStartAction(MdsAction startAction) {
-		this.startAction = startAction;
+	public void setStartAction(List<MdsAction> startActions) {
+		this.startActions = startActions;
 	}
 	public MdsAction getEndAction() {
 		return endAction;

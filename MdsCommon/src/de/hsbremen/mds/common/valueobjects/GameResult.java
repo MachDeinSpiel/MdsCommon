@@ -3,8 +3,8 @@ package de.hsbremen.mds.common.valueobjects;
 public class GameResult {
 
 	public String attribute;
-	public String setWin;
-	public String setLoose;
+	public String setWin = null;
+	public String setLoose = null;
 	public double addResult = 0;
 	public double factor = 1;
 	

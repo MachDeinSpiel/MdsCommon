@@ -1,6 +1,5 @@
 package de.hsbremen.mds.common.whiteboard;
 
-import java.util.Arrays;
 import java.util.HashMap;
 /**
  * 
@@ -170,6 +169,24 @@ public class Whiteboard extends HashMap<String, WhiteboardEntry>{
 			System.err.println("Error. No key ["+keys[keys.length-1]+"] found in Whiteboard. All keys:"+allKeys+". Returning null, an excpetion might be thrown.");
 		}
 		return result;
+	}
+	
+	/**
+	 * Returns the group/Whiteboard the player is in
+	 * @param playerName KeyPath des Spielers, dessen Gruppe gefunden werden soll
+	 * @return
+	 */
+	public String getGroupString(String elementName) {
+		
+		Whiteboard wb = this;
+		// go through the whole whiteboard and search for keyPath
+		for(String key : wb.keySet()) {
+			if (wb.getAttribute(key, elementName) != null) {
+				return key;
+			}
+		}
+		System.err.println("No Group of " +elementName + " found. Returning null");
+		return null;
 	}
 	
 

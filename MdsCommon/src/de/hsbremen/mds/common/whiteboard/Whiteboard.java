@@ -1,6 +1,8 @@
 package de.hsbremen.mds.common.whiteboard;
 
 import java.util.HashMap;
+import java.util.List;
+import java.util.Vector;
 /**
  * 
  * Das Whiteboard ist eine HashMap, die einem String (key) einen Eintrag in
@@ -176,16 +178,26 @@ public class Whiteboard extends HashMap<String, WhiteboardEntry>{
 	 * @param playerName KeyPath des Spielers, dessen Gruppe gefunden werden soll
 	 * @return
 	 */
-	public String getGroupString(String elementName) {
+	public List<String> getGroupString(String elementName) {
 		
+		// FIXME: nur 2 tiefen
 		Whiteboard wb = this;
+		List<String> keys = new Vector<String>();
 		// go through the whole whiteboard and search for keyPath
 		for(String key : wb.keySet()) {
 			if (wb.getAttribute(key, elementName) != null) {
-				return key;
+				keys.add(key);
+				return keys;
+			}
+			for(String innerKey : ((Whiteboard)wb.getAttribute(key).value).keySet()) {
+				if(wb.getAttribute(key, innerKey, elementName) != null) {
+					keys.add(key);
+					keys.add(innerKey);
+					return keys;
+				}
 			}
 		}
-		System.err.println("No Group of " +elementName + " found. Returning null");
+		System.out.println("No Group found of " + elementName + ". Returning null");
 		return null;
 	}
 	

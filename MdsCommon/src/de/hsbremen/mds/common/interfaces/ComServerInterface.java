@@ -11,11 +11,11 @@ import de.hsbremen.mds.common.whiteboard.WhiteboardUpdateObject;
  * 
  * @author ConnectionGroup
  * 
- * Für den Server - Wird nicht von beiden aufgerufen - ComServer -> Interpreter-Server
+ * Fuer den Server - Wird nicht von beiden aufgerufen - ComServer -> Interpreter-Server
  *
  */
 public interface ComServerInterface {
 	   public void onWhiteboardUpdate(WebSocket conn, List<String> keys, WhiteboardEntry value);
 	   public void onFullWhiteboardUpdate(WebSocket conn, List<WhiteboardUpdateObject> wb);
-	   public boolean onNewConnection(WebSocket conn, String name);
+	   public boolean onNewConnection(WebSocket conn, String name, String teamName);
 }

@@ -63,6 +63,40 @@ public class Whiteboard extends HashMap<String, WhiteboardEntry>{
 		wb.put(keys[keys.length-1], attribute);
 	}
 	
+public void setAttribute(WhiteboardEntry attribute, List<String> firstKeys, String... keys){
+		
+		Whiteboard wb = this;
+		
+		for (int i = 0; i < firstKeys.size(); i++) {
+			if(!wb.containsKey(firstKeys.get(i))){
+				Whiteboard newWb = new Whiteboard();
+				try {
+					wb.put(firstKeys.get(i), new WhiteboardEntry(newWb, "none")); //TODO: Visibility besser setzen
+				} catch (InvalidWhiteboardEntryException e) {
+					e.printStackTrace();
+				}	
+				wb = newWb;
+			}else{
+				wb = (Whiteboard)(wb.getAttribute(firstKeys.get(i)).value);
+			}
+		}
+		
+		for (int i = 0; i < keys.length-1; i++) {
+			if(!wb.containsKey(keys[i])){
+				Whiteboard newWb = new Whiteboard();
+				try {
+					wb.put(keys[i], new WhiteboardEntry(newWb, "none")); //TODO: Visibility besser setzen
+				} catch (InvalidWhiteboardEntryException e) {
+					e.printStackTrace();
+				}	
+				wb = newWb;
+			}else{
+				wb = (Whiteboard)(wb.getAttribute(keys[i]).value);
+			}
+		}
+		wb.put(keys[keys.length-1], attribute);
+	}
+	
 	
 	/**
 	 * Setzt die Sichtbarkeit eines Attribut des Whiteboards, indem nacheinander die Schlüssel eingesetzt werden, um ann das Attribut zu gelangen
@@ -108,6 +142,47 @@ public class Whiteboard extends HashMap<String, WhiteboardEntry>{
 			for(String key : keys){
 				allKeys += "."+key;
 			}
+			System.err.println("Error. No key ["+keys[keys.length-1]+"] found in Whiteboard. All keys:"+allKeys+". Returning null, an excpetion might be thrown.");
+		}
+		return result;
+	}
+	
+	public WhiteboardEntry getAttribute(List<String> firstKeys, String... keys){
+		if(keys.length <= 0){
+			System.err.println("Error: No key given for getting WhiteboardAttribute, please give at least one key.");
+			return null;
+		}
+		Whiteboard wb = this;
+		String allKeys = "";
+		
+		for(int i = 0; i < firstKeys.size(); i++) {
+			WhiteboardEntry wbe = wb.get(firstKeys.get(i));
+			if(wbe == null) {
+				for(String key : firstKeys){
+					allKeys += "."+key;
+				}
+				System.err.println("Error. No key ["+firstKeys.get(i)+"] found in Whiteboard. All keys:"+allKeys);
+			} else {
+				wb = (Whiteboard)wbe.value;
+			}
+		}
+		
+		for (int i = 0; i < keys.length-1; i++) {
+			WhiteboardEntry wbe =  wb.get(keys[i]);
+			if(wbe == null){
+				for(String key : keys){
+					allKeys += "."+key;
+				}
+				System.err.println("Error. No key ["+keys[i]+"] found in Whiteboard. All keys:"+allKeys);
+				return null;
+			}else{
+				wb = (Whiteboard)wbe.value;
+			}
+			
+		}
+		
+		WhiteboardEntry result = wb.get(keys[keys.length-1]);
+		if(result == null){
 			System.err.println("Error. No key ["+keys[keys.length-1]+"] found in Whiteboard. All keys:"+allKeys+". Returning null, an excpetion might be thrown.");
 		}
 		return result;

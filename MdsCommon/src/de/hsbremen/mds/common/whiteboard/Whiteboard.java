@@ -35,6 +35,23 @@ public class Whiteboard extends HashMap<String, WhiteboardEntry>{
 		}
 	}
 	
+	public void setAttributeValue(Object value, List<String> firstKeys, String... keys) throws InvalidWhiteboardEntryException{
+		if(!(value instanceof String || value instanceof Whiteboard)){
+			throw new InvalidWhiteboardEntryException(value);
+		}else{
+			WhiteboardEntry wbe = getAttribute(firstKeys, keys);
+			if(wbe != null){
+				wbe.value = value;
+			}else{
+				String keyString = "";
+				for(String k : keys){
+					keyString+= "."+k;
+				}
+				System.err.println("Error in whiteboard: can't setAttribute, keys ["+keyString+"]");
+			}
+		}
+	}
+	
 	
 	/**
 	 * Setzt ein Attribut des Whiteboards als ganzen Eintrag sammt Wert und Sichtbarkeit.

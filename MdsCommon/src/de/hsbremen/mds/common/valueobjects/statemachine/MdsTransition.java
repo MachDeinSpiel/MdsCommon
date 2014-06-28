@@ -20,7 +20,8 @@ public class MdsTransition {
 		whiteboardEvent,
 		uiLocationEvent,
 		locationWhiteboardEvent,
-		uiWhiteboardEvent
+		uiWhiteboardEvent,
+		multiplewhiteboardEvent
 	}
 	
 	public MdsTransition(MdsState target, EventType eventType){

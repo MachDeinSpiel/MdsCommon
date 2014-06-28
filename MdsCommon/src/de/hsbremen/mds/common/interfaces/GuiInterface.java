@@ -16,7 +16,7 @@ public interface GuiInterface {
         
         void showMap(ArrayList<MdsItem> items2display);
         void addToBackpack(MdsItem item);
-        void removeFromBackpack(MdsItem item);
+        void removeFromBackpack(String itemPathKey);
         
         void update();
 }

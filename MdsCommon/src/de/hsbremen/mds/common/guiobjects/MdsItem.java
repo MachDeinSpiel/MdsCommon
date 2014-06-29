@@ -1,12 +1,10 @@
 package de.hsbremen.mds.common.guiobjects;
 
-import java.io.Serializable;
 
 /**
  * @author chumbawamba!
  */
 
-//TODO: diese Klasse löschen
 public class MdsItem{
 
 	private String name;
@@ -14,11 +12,13 @@ public class MdsItem{
 	private double longitude;
 	private double latitude;
 	private String pathKey;
+	private boolean isDroppable;
 	
-	public MdsItem(String name, String imagePath, String pathKey) {	
+	public MdsItem(String name, String imagePath, String pathKey, boolean isDroppable) {	
 		this.name = name;
 		this.imagePath = imagePath;
 		this.pathKey = pathKey;
+		this.isDroppable = isDroppable;
 	}
 	
 	public String getName() {
@@ -56,5 +56,13 @@ public class MdsItem{
 
 	public void setPathKey(String pathKey) {
 		this.pathKey = pathKey;
+	}
+
+	public boolean isDroppable() {
+		return isDroppable;
+	}
+
+	public void setDroppable(boolean isDroppable) {
+		this.isDroppable = isDroppable;
 	}
 }

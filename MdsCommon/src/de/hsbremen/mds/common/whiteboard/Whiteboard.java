@@ -273,6 +273,7 @@ public void setAttribute(WhiteboardEntry attribute, List<String> firstKeys, Stri
 	public List<String> getGroupString(String elementName) {
 		
 		// FIXME: nur 2 tiefen
+		System.out.println("Finding Group of " + elementName);
 		Whiteboard wb = this;
 		List<String> keys = new Vector<String>();
 		// go through the whole whiteboard and search for keyPath

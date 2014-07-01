@@ -9,6 +9,7 @@ import org.json.JSONObject;
 
 import de.hsbremen.mds.common.exception.UnknownWhiteboardTypeException;
 import de.hsbremen.mds.common.whiteboard.InvalidWhiteboardEntryException;
+import de.hsbremen.mds.common.whiteboard.Whiteboard;
 import de.hsbremen.mds.common.whiteboard.WhiteboardEntry;
 import de.hsbremen.mds.common.whiteboard.WhiteboardUpdateObject;
 
@@ -110,6 +111,13 @@ public class WhiteboardHandler {
 				json.put("value", (Boolean) entry.value);
 			else if (entry.value instanceof Long)
 				json.put("value", (Long) entry.value);
+			else if (entry.value instanceof Whiteboard) {
+				Whiteboard wbEntry = (Whiteboard)entry.value;
+				for(String key : wbEntry.keySet()) {
+					keys.add(key);
+					toJson(keys, wbEntry.get(key));
+				}
+			}
 			else
 				throw new UnknownWhiteboardTypeException(entry.value.getClass()
 						.getName());

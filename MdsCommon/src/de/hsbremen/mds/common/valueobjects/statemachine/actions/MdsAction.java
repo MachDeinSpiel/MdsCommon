@@ -19,7 +19,8 @@ public class MdsAction {
 		changeAttribute,
 		useItem,
 		updateMap,
-		startMiniApp		
+		startMiniApp,
+		dropItem
 		
 	}
 	

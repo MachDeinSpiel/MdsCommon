@@ -20,7 +20,8 @@ public class MdsAction {
 		useItem,
 		updateMap,
 		startMiniApp,
-		dropItem
+		dropItem,
+		backToMap
 		
 	}
 	

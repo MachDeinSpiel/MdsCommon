@@ -21,7 +21,8 @@ public class MdsTransition {
 		uiLocationEvent,
 		locationWhiteboardEvent,
 		uiWhiteboardEvent,
-		multiplewhiteboardEvent
+		multiplewhiteboardEvent, 
+		locationMultiplewhiteboardEvent
 	}
 	
 	public MdsTransition(MdsState target, EventType eventType){

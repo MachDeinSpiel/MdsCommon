@@ -17,4 +17,6 @@ public interface GuiInterface {
         void setPlayerData(HashMap<String, Object> dataMap);
         
         void update();
+
+		void endGame();
 }
